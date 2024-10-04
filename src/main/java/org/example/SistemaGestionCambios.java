@@ -193,6 +193,7 @@ public class SistemaGestionCambios {
 
         if (indiceCliente < 0 || indiceCliente >= listaClientes.size()) {
             System.out.println("Cliente no válido. Inténtelo de nuevo.");
+            registrarSolicitudCambioRecursivo(); //recursividad
             return;
         }
 
@@ -223,6 +224,15 @@ public class SistemaGestionCambios {
         } else {
             nuevoCambio.estado = "Rechazado";
             System.out.println("Cambio rechazado: " + nuevoCambio.descripcion);
+        }
+
+        System.out.print("¿Desea registrar otro cambio? (s/n): ");
+        String respuesta = scanner.nextLine().toLowerCase();
+
+        if (respuesta.equals("s")) {
+            registrarSolicitudCambioRecursivo(); // recursividad
+        } else {
+            System.out.println("Proceso de registro de cambios finalizado.");
         }
     }
 
